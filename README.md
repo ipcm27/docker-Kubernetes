@@ -11,6 +11,7 @@ Muito mais que um orquestrador de containers. Gerenciar um Cluster (conjunto de 
 - Master: Gerenciar o cluster, manter e atualizar o estado desejado(c-manager), receber e executar os comandos (API) = Control Plane;
 - node: executar os pods dentro dos nodes (Kubelets), comunicação entre os nodes (K-proxy) = Nodes; 
 - KubeCtl = APi para se comunicar com a APi do central plane.
+- Config Map: armazena configurações que iremos usar em determinados pods. Por exemplo, variáveis de ambiente do DB. Além disso, podemos usar um coinfig map para vários pods #desaclopamento
 
 # O que é um pod? #
 
