@@ -6,7 +6,7 @@ Apenas um aqrquivo Readme.md para que eu possa ir anotando conceitos que acho im
 
 Muito mais que um orquestrador de containers. Gerenciar um Cluster (conjunto de conteiners)
 
-#O que é um pod?#
+# O que é um pod? #
 
 Pods são os menores e mais básicos objetos implantáveis no Kubernetes. Um pod representa uma única instância de um processo em execução no seu cluster.
 
