@@ -6,6 +6,12 @@ Apenas um aqrquivo Readme.md para que eu possa ir anotando conceitos que acho im
 
 Muito mais que um orquestrador de containers. Gerenciar um Cluster (conjunto de conteiners)
 
+# Alguns conceitos rápidos: #
+- Cluster: conjunto de pods
+- Master: Gerenciar o cluster, manter e atualizar o estado desejado(c-manager), receber e executar os comandos (API) = Control Plane;
+- node: executar os pods dentro dos nodes (Kubelets), comunicação entre os nodes (K-proxy) = Nodes; 
+- KubeCtl = APi para se comunicar com a APi do central plane.
+
 # O que é um pod? #
 
 Pods são os menores e mais básicos objetos implantáveis no Kubernetes. Um pod representa uma única instância de um processo em execução no seu cluster.
@@ -28,17 +34,25 @@ Os pods são executados em nodes no cluster. Depois de criado, o pod permanece n
 Fonte: https://cloud.google.com/kubernetes-engine/docs/concepts/pod
 
 # Criação de pods #
- - Arquivo .yaml - declaração do pod. Contém as informações sobre as imagens disponiveis. Caso queira alterar, edita na IDE then kuctl apply -f PATH do yaml
+ Arquivo .yaml - declaração do pod. Contém as informações sobre as imagens disponiveis. Caso queira alterar, edita na IDE then kuctl apply -f PATH do yaml
     
       Para começar a edição declaramos a versão da API que pode ser a versão alfa, a versão beta e a versão estável.
       
       Onde a alfa tem coisas que podem ainda estar contendo bug; A beta que já pode ser considerada segura, mas ainda não é bom utilizar definitivamente; E a versão estável que é um “v” seguido de um número inteiro, onde é a versão estável efetivamente para uso.
+      
+# Services
 
-# Outros conceitos: #
-- Master: Gerenciar o cluster, manter e atualizar o estado desejado(c-manager), receber e executar os comandos (API) = Control Plane;
-- node: executar os pods dentro dos nodes (Kubelets), comunicação entre os nodes (K-proxy) = Nodes; 
-- KubeCtl = APi para se comunicar com a APi do central plane.
-- SVC: as aplicações de microserviços  precisam se comunicar. se um pode com o serviço de login cair, outro precisa subir no lugar dele. POrém, commo os outros serviços saberão o ip do novo pod? através do sv, que é uma abstração para expor aplicações. elas proveem Ips fixos para comunicação, DNS para um ou mais pods e são cpazes de fazer balanceamento de carga.
+As aplicações de microserviços  precisam se comunicar. Se um pod com o serviço de login cair, outro precisa subir no lugar dele. Porém, commo os outros serviços saberão o ip do novo pod? através do sv, que é uma abstração para expor aplicações. elas proveem Ips fixos para comunicação, DNS para um ou mais pods e são cpazes de fazer balanceamento de carga.   
+
+OS services possuem:
+-ClusterIP - serve para ele manejar o pod que ele vai enviar caso dê erro o pod atual.
+-NodePort - serve para mapear a porta que ele recebe requisições de fora e que envia dentro do cluster
+-Load balancer = ClusterIp + NodePOrt
+
+São criados através de arquivos yaml
+
+
+
 
 
 
