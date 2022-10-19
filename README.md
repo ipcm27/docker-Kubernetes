@@ -14,8 +14,8 @@ Os pods contêm um ou mais contêineres, como os Docker. Quando um pod executa v
 
 Os pods também contêm recursos compartilhados de rede e armazenamento para os contêineres:
 
-    Rede: endereços IP exclusivos são atribuídos automaticamente aos pods. Os contêineres do pod compartilham o mesmo namespace da rede, incluindo o endereço IP e as portas de rede. Os contêineres em um pod se comunicam entre si dentro do pod em localhost.
-    Armazenamento: os pods podem especificar um conjunto de volumes de armazenamento compartilhado que pode ser compartilhado entre os contêineres.
+-Rede: endereços IP exclusivos são atribuídos automaticamente aos pods. Os contêineres do pod compartilham o mesmo namespace da rede, incluindo o endereço IP e as portas de rede. Os contêineres em um pod se comunicam entre si dentro do pod em localhost.
+-Armazenamento: os pods podem especificar um conjunto de volumes de armazenamento compartilhado que pode ser compartilhado entre os contêineres.
 
 Pense em um pod como um "host lógico" autônomo e isolado que contém as necessidades sistêmicas do aplicativo que ele veicula.
 
@@ -27,14 +27,18 @@ Os pods são executados em nodes no cluster. Depois de criado, o pod permanece n
 
 Fonte: https://cloud.google.com/kubernetes-engine/docs/concepts/pod
 
+# Criação de pods #
+ - Arquivo .yaml - declaração do pod. Contém as informações sobre as imagens disponiveis. Caso queira alterar, edita na IDE then kuctl apply -f PATH do yaml
+    
+      Para começar a edição declaramos a versão da API que pode ser a versão alfa, a versão beta e a versão estável.
+      
+      Onde a alfa tem coisas que podem ainda estar contendo bug; A beta que já pode ser considerada segura, mas ainda não é bom utilizar definitivamente; E a versão estável que é um “v” seguido de um número inteiro, onde é a versão estável efetivamente para uso.
+
 # Outros conceitos: #
 - Master: Gerenciar o cluster, manter e atualizar o estado desejado(c-manager), receber e executar os comandos (API) = Control Plane;
 - node: executar os pods dentro dos nodes (Kubelets), comunicação entre os nodes (K-proxy) = Nodes; 
-
 - KubeCtl = APi para se comunicar com a APi do central plane.
+- SVC: as aplicações de microserviços  precisam se comunicar. se um pode com o serviço de login cair, outro precisa subir no lugar dele. POrém, commo os outros serviços saberão o ip do novo pod? através do sv, que é uma abstração para expor aplicações. elas proveem Ips fixos para comunicação, DNS para um ou mais pods e são cpazes de fazer balanceamento de carga.
 
-- Arquivo .yaml - declaração do pod. Contém as informações sobre as imagens disponiveis. Caso queira alterar, edita na IDE then kuctl apply -f PATH do yaml
-    
-      Para começar a edição declaramos a ver~sao da APique pode ser a versão alfa, a versão beta e a versão estável.
-      
-      Onde a alfa tem coisas que podem ainda estar contendo bug; e a beta que já pode ser considerada segura, mas ainda não é bom utilizar definitivamente;       e a versão estável que é um “v” seguido de um número inteiro, onde é a versão estável efetivamente para uso.
+
+
